@@ -1,0 +1,47 @@
+<h1>Ping</h1>
+
+<form action="/add" method="POST">
+    <h2>Add url to scan</h2>
+    <div class="input-field inline">
+        <input 
+        type="text" 
+        name="url" 
+        id="url-field"
+        pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)\.(.*)(\/[^\s]*)?" 
+        placeholder="http://example.com">
+    </div>
+    <button class="btn" type="submit">Add</button>
+</form>
+<div class="row">
+    <div class="col s8">
+        <h2>URL table</h2>
+        {{#if urls.length}}
+        <ul class="collection">
+            {{#each urls}}
+            <li class="collection-item">
+                <p>{{ url }}</p>
+                <input type="hidden" value="{{_id}}" name="id" />
+                <a href="/delete" class="btn btn-small">Delete</a>
+                <div>
+                    <canvas id="codeChart"></canvas>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+
+        {{else}}
+        <p>No urls!</p>
+        {{/if}}
+    </div>
+</div>
+<script>
+    console.log(responses)
+    const ctx = document.getElementById('codeChart')
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+
+        }
+    })
+</script>
